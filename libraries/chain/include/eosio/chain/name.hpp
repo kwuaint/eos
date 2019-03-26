@@ -91,13 +91,18 @@ namespace eosio { namespace chain {
       operator unsigned __int128()const       { return value; }
    };
 
-
-   inline std::vector<name> sort_names( std::vector<name>&& names ) {
-      fc::deduplicate(names);
-      return names;
-   }
-
 } } // eosio::chain
+
+namespace std {
+   template<> struct hash<eosio::chain::name> : private hash<uint64_t> {
+      typedef eosio::chain::name argument_type;
+      typedef typename hash<uint64_t>::result_type result_type;
+      result_type operator()(const argument_type& name) const noexcept
+      {
+         return hash<uint64_t>::operator()(name.value);
+      }
+   };
+};
 
 namespace fc {
   class variant;

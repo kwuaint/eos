@@ -1,11 +1,11 @@
 /**
  *  @file
- *  @copyright defined in eos/LICENSE.txt
+ *  @copyright defined in eos/LICENSE
  */
 #pragma once
 #include <appbase/application.hpp>
 #include <fc/variant.hpp>
-#include <eosio/chain/contracts/types.hpp>
+#include <eosio/chain/contract_types.hpp>
 #include <eosio/chain/transaction.hpp>
 
 namespace fc { class variant; }
@@ -42,4 +42,3 @@ private:
 };
 
 }
-
